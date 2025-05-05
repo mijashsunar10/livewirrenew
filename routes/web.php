@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\PostForm;
+use App\Livewire\PostList;
 use App\Livewire\Posts\CreatePost;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -27,5 +28,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/create-post', CreatePost::class)->middleware(['auth','verified']);
 
 Route::get('/create', PostForm::class)->name('posts.create')->middleware(['auth','verified']);
+Route::get('/view', PostList::class)->name('posts.view');
 
 require __DIR__.'/auth.php';

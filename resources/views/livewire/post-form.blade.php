@@ -27,5 +27,7 @@
     
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
         </form>
+
+        <a href="{{route('posts.view')}}">View Post</a>
     </div>
 </div>
