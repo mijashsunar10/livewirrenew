@@ -25,6 +25,12 @@
                 <!-- Description -->
                 <p>{{ $post->description }}</p>
 
+                        <!-- Image -->
+                @if ($post->image)
+                <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" class="w-full max-h-60 object-cover rounded mb-2">
+            @endif
+
+
                 <a href="{{route('posts.edit',$post->id)}}" class="bg-blue-900 text-white px-2 py-1 m-2 hover:underline">Edit</a>
     
                 <button onclick="if(confirm('Are u want to delete this post?')){@this.call('delete',{{$post->id}})}" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
