@@ -23,6 +23,14 @@
         @endforelse
 
         <a href="{{route('posts.view')}}">Go back to view</a>
+
+            @foreach($trashedPosts as $post)
+        <div>
+            <p>{{ $post->title }}</p>
+            <p>Auto-deletes in: {{ $post->time_left }}</p>
+        </div>
+    @endforeach
+
     </div>
     
 </div>

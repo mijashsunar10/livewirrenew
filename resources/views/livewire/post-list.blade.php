@@ -52,7 +52,7 @@
     <a href="{{ route('posts.create') }}" class="bg-blue-600  text-white my-2 px-4 py-2 rounded">
        Go back to post..
         </a>
-    <a href="{{ route('posts.trash') }}" class="bg-blue-600  text-white mx-4 mt-2 px-4 py-2 rounded">
+    <a href="{{ route('posts.trash') }}" class="bg-blue-600 mx-2 text-white mt-2 px-4 py-2 rounded">
       Trash
         </a>
 

@@ -11,9 +11,12 @@ class TrashPosts extends Component
    
     public function mount()
     {
-        $this->trashedPosts = Post::onlyTrashed()->latest()->get();
-
+        $this->trashedPosts = Post::onlyTrashed()->latest()->get()->map(function ($post) {
+            $post->time_left = now()->diffForHumans($post->deleted_at->addminute(1), true); // Example for 7 days
+            return $post;
+        });
     }
+    
 
     public function restore($id)
     {
