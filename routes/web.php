@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\PostEdit;
 use App\Livewire\PostForm;
 use App\Livewire\PostList;
 use App\Livewire\Posts\CreatePost;
@@ -29,5 +30,6 @@ Route::get('/create-post', CreatePost::class)->middleware(['auth','verified']);
 
 Route::get('/create', PostForm::class)->name('posts.create')->middleware(['auth','verified']);
 Route::get('/view', PostList::class)->name('posts.view');
+Route::get('/posts/edit/{id}',PostEdit::class)->name('posts.edit');
 
 require __DIR__.'/auth.php';

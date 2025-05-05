@@ -31,7 +31,9 @@ class PostForm extends Component
 
                 
             // Sets a temporary success message that can be shown in the view
-            session()->flash('message', 'Post created successfully!');  
+            // session()->flash('message', 'Post created successfully!');  
+            // return redirect()->route('posts.view');
+            return redirect()->route('posts.view')->with('message','Post created successfully');
 
     }
     public function render()

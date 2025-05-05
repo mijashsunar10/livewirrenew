@@ -24,10 +24,11 @@
                 <textarea wire:model="description" class="w-full border p-2 rounded"></textarea>
                 @error('description') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
-    
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">Submit</button>
         </form>
 
-        <a href="{{route('posts.view')}}">View Post</a>
+       
     </div>
+
+    <a class="bg-blue-600 text-white px-4 py-2 mt-4 rounded " href="{{route('posts.view')}}">View Post</a>
 </div>
