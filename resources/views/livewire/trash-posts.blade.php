@@ -7,29 +7,15 @@
             </div>
         @endif
     
-        @forelse($trashedPosts as $post)
-            <div class="border p-4 rounded bg-red-50">
-                <h2 class="text-lg font-bold">{{ $post->title }}</h2>
-                <p>{{ $post->description }}</p>
-                <div class="flex space-x-2 mt-2">
-                    <button wire:click="restore({{ $post->id }})" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Restore</button>
-                    {{--  It's the Livewire version of calling a method when a button is clicked ..This calls the restore() method in your Livewire component and passes the specific post's ID to it. --}}
-                    {{-- {{ $post->id }} This dynamically passes the ID of the current post in the loop. --}}
-                    <button wire:click="forceDelete({{ $post->id }})" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete Permanently</button>
-                </div>
-            </div>
-        @empty
-            <p>No trashed posts.</p>
-        @endforelse
+        
 
         <a href="{{route('posts.view')}}">Go back to view</a>
 
-            @foreach($trashedPosts as $post)
-        <div>
-            <p>{{ $post->title }}</p>
-            <p>Auto-deletes in: {{ $post->time_left }}</p>
-        </div>
-    @endforeach
+          
+  
+
+
+    </div>
 
     @foreach ($trashedPosts as $post)
     <div class="border p-4 rounded shadow">
@@ -44,7 +30,14 @@
             <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" class="w-full max-h-60 object-cover rounded my-2">
         @endif
 
-        <!-- Time left until auto-deletion (if applicable) -->
+        <!-- Time left until auto-deletion -->
+        @if(now()->lt($post->will_be_deleted_at))
+            <p class="text-sm text-gray-500">Auto-deletes in: {{ $post->time_left }}</p>
+        @else
+            <p class="text-sm text-red-500">About to be deleted...</p>
+        @endif
+
+        <!-- Deletion time -->
         <p class="text-sm text-gray-500">Deleted {{ $post->deleted_at->diffForHumans() }}</p>
 
         <!-- Restore & Delete Buttons -->
@@ -54,8 +47,5 @@
         </div>
     </div>
 @endforeach
-
-
-    </div>
     
 </div>
