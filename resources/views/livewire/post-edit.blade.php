@@ -20,6 +20,20 @@
             @error('description') <span class="text-red-600">{{ $message }}</span> @enderror
         </div>
 
+        <div>
+            <label class="block">Image</label>
+            @if($oldImage)
+                <div>
+                    
+                        <img src="{{asset('storage/'.$oldImage)}}" alt="CurrentImage" class="w-32 h-32 object-cover mb-2">
+                        <p>Current Image</p>
+                    
+                </div>
+            @endif
+            <input type="file" wire:model="image" class="w-full border p-2 rounded">
+            @error('image') <span class="text-red-600">{{ $message }}</span> @enderror
+        </div>
+
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">Update</button>
     </form>
 
