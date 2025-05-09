@@ -7,6 +7,7 @@ use App\Livewire\PostForm;
 use App\Livewire\PostList;
 use App\Livewire\New\CreatePost;
 use App\Livewire\New\ViewList;
+use App\Livewire\TinyMce;
 use App\Livewire\TrashPosts;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
@@ -31,12 +32,13 @@ Route::middleware(['auth'])->group(function () {
 
 // Route::get('/posts/create', CreatePost::class);
 
-Route::get('/create-post', CreatePost::class)->middleware(['auth','verified']);
+// Route::get('/create-post', CreatePost::class)->middleware(['auth','verified']);
 
 Route::get('/create', PostForm::class)->name('posts.create')->middleware(['auth','verified']);
 Route::get('/view', PostList::class)->name('posts.view');
 Route::get('/posts/edit/{id}',PostEdit::class)->name('posts.edit');
 Route::get('/trash', TrashPosts::class)->name('posts.trash');
+
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/profile/avatar', AvatarUpload::class)->name('profile.avatar');
@@ -46,7 +48,7 @@ Route::get('/trash', TrashPosts::class)->name('posts.trash');
 //     Route::get('/profile/update', ProfileUpdate::class)->name('profile.update');
 // });
 
-// Route::get('/new/create',CreatePost::class)->name('new.create')->middleware('auth','verified');
-// Route::get('/new/view',ViewList::class)->name('new.view')->middleware('auth','verified');
+Route::get('/new/create',CreatePost::class)->name('new.create')->middleware('auth','verified');
+Route::get('/new/view',ViewList::class)->name('new.view')->middleware('auth','verified');
 
 require __DIR__.'/auth.php';
